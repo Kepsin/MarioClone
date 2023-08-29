@@ -6,16 +6,20 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D player;
+
+    private float jump, horizontal;
+
+    public float moveSpeed = 10.0f;
     // Update is called once per frame
     void Start() {
     }
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            player.AddForce(transform.up * 100);
-        }
-        if (Input.GetKeyDown(KeyCode.D)) {
-            player.AddForce(transform.right * 100);
-        }
+        horizontal = Input.GetAxis("Horizontal");
+        jump = Input.GetAxis("Jump");
+
+        player.transform.Translate(new Vector2(horizontal, jump) * moveSpeed * Time.deltaTime);
+
+
     }
 }
