@@ -19,11 +19,14 @@ public class LevelWin : MonoBehaviour
         
     }
 
-    void OnCollision2D(Collision2D col) {
-        Debug.Log("Test");
-        if (col.gameObject.name.Equals("Player")) {
+    void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("Triggered");
+        if(other.gameObject.name.Equals("Player")) {
             win.enabled = true;
-            this.gameObject.SetActive(false);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D col) {
+        Debug.Log("Entered");
     }
 }
