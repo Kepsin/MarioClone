@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D player;
+    private Rigidbody2D player;
+
+    private float horizontal;
+
+    [SerializeField]
+    private float moveSpeed;
     // Update is called once per frame
     void Start() {
+        player = GetComponent<Rigidbody2D>();
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            player.AddForce(transform.up * 100);
-        }
-        if (Input.GetKeyDown(KeyCode.D)) {
-            player.AddForce(transform.right * 100);
-        }
+    void FixedUpdate()
+    {        
+        horizontal = Input.GetAxis("Horizontal");
+
+        player.transform.Translate(new Vector2(horizontal, 0) * moveSpeed * Time.deltaTime);
     }
 }
