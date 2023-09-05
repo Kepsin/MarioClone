@@ -7,7 +7,7 @@ public class JumpController : MonoBehaviour
 {
     private Rigidbody2D player;
     [SerializeField]
-    private float jump;
+    private float jump, multiplyer;
     Vector2 vecGravity;
 
     public LayerMask groundLayer;
@@ -24,6 +24,9 @@ public class JumpController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded()) {
             player.velocity = new Vector2(player.velocity.x, jump);
+        }
+        if (player.velocity.y < 0) {
+            player.velocity -= vecGravity * multiplyer * Time.deltaTime;
         }
     }
 

@@ -24,6 +24,9 @@ public class Coins : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
+
+
+        
         if(other.gameObject.name.Equals("Player")) {
             coinGO.SetActive(false);
             pd.addCoins(1);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class LevelWin : MonoBehaviour
@@ -22,11 +23,7 @@ public class LevelWin : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         Debug.Log("Triggered");
         if(other.gameObject.name.Equals("Player")) {
-            win.enabled = true;
+            SceneManager.LoadScene("Level Selector", LoadSceneMode.Single);
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D col) {
-        Debug.Log("Entered");
     }
 }
