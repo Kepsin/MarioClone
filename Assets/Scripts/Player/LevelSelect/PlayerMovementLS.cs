@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovementLS : MonoBehaviour
 {
     Rigidbody2D player;
-    float horizontal, moveSpeed;
+    float horizontal, vertical, moveSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +14,12 @@ public class PlayerMovementLS : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
-        player.transform.Translate(new Vector2(horizontal, 0) * moveSpeed * Time.deltaTime);
+        player.transform.Translate(new Vector2(horizontal, vertical) * moveSpeed * Time.deltaTime);
     }
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -23,12 +24,14 @@ public class EnemyBehavior : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll) {
         if (coll.gameObject.name.Equals("Player") && coll.transform.position.y < enemyRB.transform.position.y + .5) {
-            coll.transform.position = new Vector2(0.02f ,-2.48f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (coll.gameObject.name.Equals("Player") && coll.transform.position.y > enemyRB.transform.position.y + .5) {
             this.gameObject.SetActive(false);
         }
-        movementSpeed = -movementSpeed;
+        if (!coll.gameObject.name.Equals("Player")) {
+            movementSpeed = -movementSpeed;
+        }
 
     }
 }

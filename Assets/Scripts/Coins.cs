@@ -7,13 +7,14 @@ public class Coins : MonoBehaviour
 {
     Rigidbody2D coinRB;
     GameObject coinGO;
-    public PlayerData pd;
+    PlayerData pd;
     public TMP_Text coinText;
     // Start is called before the first frame update
     void Start()
     {
         coinRB = this.GetComponent<Rigidbody2D>();
         coinGO = this.gameObject;
+        pd = GameObject.Find("PlayerData").GetComponent<PlayerData>();
         coinText.text = pd.getCoins().ToString();
     }
 

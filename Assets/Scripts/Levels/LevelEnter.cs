@@ -20,7 +20,7 @@ public class LevelEnter : MonoBehaviour
     void OnTriggerStay2D(Collider2D other) {
         if(Input.GetButtonDown("Jump")) {
             Debug.Log("Working");
-            SceneManager.LoadScene("Level 1", LoadSceneMode.Single);
+            SceneManager.LoadScene(gameObject.name, LoadSceneMode.Single);
         }
     }
 }
