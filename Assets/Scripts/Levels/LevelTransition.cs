@@ -10,9 +10,9 @@ public class LevelTransition : MonoBehaviour
     [SerializeField]
     Vector2 levelPosition;
     [SerializeField]
-    GameObject Player, UI;
+    GameObject Player;
     PlayerData pd;
-    TMP_Text coinsText;
+    TMP_Text coinsText, livesText;
     void Awake() {
         if (Instance != null)
         {
@@ -28,9 +28,15 @@ public class LevelTransition : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        UI = GameObject.Find("Canvas");
+        coinsText = GameObject.Find("Coin_Total").GetComponent<TMP_Text>();
+        coinsText.text = pd.getCoins().ToString();
+        pd.setCoinsText(coinsText);
+        livesText = GameObject.Find("Lives").GetComponent<TMP_Text>();
+        livesText.text = pd.getLives().ToString();
+        pd.setLivesText(livesText);
+
         Player = GameObject.Find("Player");
-        UI.GetComponentInChildren<TMP_Text>().text = pd.getCoins().ToString();
+
         if (SceneManager.GetActiveScene().name.Equals("Level Selector")) {
             returnToLevel();
         }
