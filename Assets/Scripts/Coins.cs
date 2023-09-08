@@ -10,6 +10,9 @@ public class Coins : MonoBehaviour
     PlayerData pd;
     public TMP_Text coinText;
     // Start is called before the first frame update
+    void Awake() {
+        coinText = GameObject.Find("Coin_Total").GetComponentInChildren<TMP_Text>();
+    }
     void Start()
     {
         coinRB = this.GetComponent<Rigidbody2D>();

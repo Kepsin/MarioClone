@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instance;
     [SerializeField]
     private int coins;
-    public TMP_Text coinDisplay;
 
     void Awake() {
-
         if (Instance != null)
         {
         Destroy(gameObject);
@@ -19,9 +19,10 @@ public class PlayerData : MonoBehaviour
         }
         Instance =  this;
         DontDestroyOnLoad(gameObject);
-        
+
     }
     void Start() {
+
     }
 
     public int getCoins() {
@@ -34,4 +35,5 @@ public class PlayerData : MonoBehaviour
     public void removeCoins(int var) {
         coins -= var;
     }
+
 }

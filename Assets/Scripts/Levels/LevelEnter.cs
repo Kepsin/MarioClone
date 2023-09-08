@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelEnter : MonoBehaviour
 {
+    LevelTransition lt;
     // Start is called before the first frame update
     void Start()
     {
-        
+        lt = GameObject.Find("LevelTransition").GetComponent<LevelTransition>();
     }
 
     // Update is called once per frame
@@ -19,8 +20,9 @@ public class LevelEnter : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other) {
         if(Input.GetButtonDown("Jump")) {
-            Debug.Log("Working");
-            SceneManager.LoadScene(gameObject.name, LoadSceneMode.Single);
+            Debug.Log(gameObject.name);
+            lt.setlevelPosition(this.gameObject.transform.position);
+            SceneManager.LoadScene(this.gameObject.name, LoadSceneMode.Single);
         }
     }
 }
